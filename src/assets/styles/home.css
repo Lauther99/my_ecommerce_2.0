@@ -1,12 +1,12 @@
 .home-container {
     width: 100%;
-    max-width: 1320px;
     padding: 1rem;
-    background-color: #fff;
+    background-color: rgba(238, 238, 238, 0.842);
     margin: 0 auto;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    box-shadow: 0 0 20px 0 #53d9d1;
 }
 
 /*  LISTA DE CATEGORIAS  */
@@ -42,7 +42,7 @@
     transition: all .5s;
     overflow: hidden;
     text-align: center;
-    background-color: #53d9d09f;
+    background-color: #53d9d0bd;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
@@ -96,7 +96,6 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
 }
 
 .search-div input {
@@ -104,17 +103,9 @@
     width: 90%;
     min-width: 100px;
     max-width: 650px;
-    padding: 1rem;
-    border-radius: 5px;
-    border: 2px solid grey;
-    text-decoration: none;
-    box-shadow: 0 0 10px 0 rgb(255, 255, 255);
-    font-size: 24px;
-    justify-self: flex-start;
-}
-
-.search-div input:hover {
-    box-shadow: 0 0 20px 0 black;
+    padding: .5rem;
+    border: 1px solid lightgray;
+    font-size: 16px;
 }
 
 .search-btn {
@@ -122,12 +113,15 @@
     height: 2.5rem;
     padding: .5rem;
     place-items: center;
-    border-radius: 5px;
     border: none;
+    color: #0F2027;
+    background-color: #53d9d1;
+    cursor: pointer;
 }
 
 .search-btn:hover {
-    box-shadow: 0 0 20px 0 black;
+    color: #53d9d1;
+    background-color: #0F2027;
 }
 
 .products-container {
@@ -148,7 +142,6 @@
     flex-direction: column;
     align-items: center;
     position: relative;
-    box-shadow: 0 0 5px 0 #0F2027;
 }
 
 .product-card a {
@@ -163,6 +156,7 @@
     border-top-right-radius: 5px;
     display: flex;
     align-items: center;
+    background-color: #fff;
 
 }
 
@@ -184,6 +178,16 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.product-card:hover{
+    transform: scale(1.02);
+}
+
+.product-card:hover .add-cart{
+    opacity: 1;
 }
 
 .product-info h4:nth-child(1) {
@@ -214,6 +218,3 @@
     margin: auto;
 }
 
-.add-cart:hover {
-    opacity: 1;
-}

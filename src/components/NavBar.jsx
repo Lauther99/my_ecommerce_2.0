@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../assets/styles/navbar.css'
+import Cart from './Cart';
 
 const NavBar = () => {
+    const [activateCart, setActivateCart] = useState('modalOn');
+    function modalOn() {
+        activateCart === 'modalOn'? setActivateCart('') : setActivateCart('modalOn')
+    }
+
     return (
         <nav>
             <div className='div-nav'>
@@ -17,19 +23,13 @@ const NavBar = () => {
                         <i className="fa-solid fa-store fa-xl"></i>
                     </Link>
                 </div>
-                <div className='nav-icon link-icon'>
+                <div className='nav-icon link-icon' onClick={() => modalOn()}>
                     <i className="fa-solid fa-cart-shopping fa-xl"></i>
                 </div>
+                <Cart activateCart={activateCart}/>
             </div>
         </nav>
     );
 };
 
 export default NavBar;
-
-/*
-Debe tener 3 botones
-uno para el login
-otro para purchases
-otro para el carrito, debe ser un modal que aparece del lado derecho
-*/

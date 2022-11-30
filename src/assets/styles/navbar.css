@@ -1,14 +1,24 @@
-.div-nav {
+nav{
+    position: relative;
     width: 100%;
-    height: 100px;
-    max-width: 1320px;
-    background-color: #eee;
+    height: 70px;
+}
+
+.div-nav {
+    width: calc(100%);
+    height: 70px;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
+    gap: 1rem;
     margin: 0 auto;
-    margin-bottom: 1rem;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: #151515a9;
+    backdrop-filter: blur(100px);
+    z-index: 1000;
 
 }
 
@@ -28,10 +38,8 @@
 }
 
 .nav-icon {
-    background-color: #151515;
     width: 200px;
     height: 100%;
-    border: 1px solid gray;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -41,6 +49,18 @@
     cursor: pointer;
 }
 
+.nav-icon:nth-child(2){
+    border-right: 2px solid lightgray;
+}
+.nav-icon:nth-child(3){
+    border-left: 2px solid lightgray;
+    border-right: 2px solid lightgray;
+}
+
+.nav-icon:nth-child(4){
+    border-left: 2px solid lightgray;
+}
+
 .link-icon {
     color: #53d9d1;
     transition: color 1s cubic-bezier(0.32, 0, 0.67, 0);
@@ -48,7 +68,7 @@
 }
 
 .link-icon:hover {
-    color: #111;
+    color: #0F2027;
     transition: color 1s cubic-bezier(0.33, 1, 0.68, 1);
 }
 
@@ -78,7 +98,7 @@
     height: 100%;
     top: 0;
     right: 0;
-    background-color: #151515;
+    background-color: #0F2027;
 
     clip-path: polygon(40% 0%,
             60% 0%,
@@ -95,10 +115,10 @@
 .link-icon:hover::after {
     clip-path: polygon(40% 10%,
             60% 10%,
-            60% 35%,
-            40% 35%,
+            60% 30%,
+            40% 30%,
             40% 90%,
             60% 90%,
-            60% 65%,
-            40% 65%);
+            60% 70%,
+            40% 70%);
 }

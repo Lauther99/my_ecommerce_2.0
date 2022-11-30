@@ -11,10 +11,11 @@
     display: flex;
     padding: 1rem 0;
     gap: 1rem;
+    color: #eee;
 }
 
 .home-link a{
-    color: black;
+    color: #eee;
     font-weight: 600;
 }
 
@@ -52,16 +53,14 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: rgba(255, 255, 255, 0.729);
+    background-color: #eee;
 }
 
 .product-features p:nth-child(1){
-    color: black;
     font-size: 30px;
 }
 
 .product-features p:nth-child(2){
-    color: black;
     text-align: justify;
 }
 
@@ -86,7 +85,7 @@
     height: 100px;
     display: flex;
     align-items: center;
-    color: grey;
+    color: #eee;
 }
 
 .similar-products{

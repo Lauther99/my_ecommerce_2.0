@@ -1,0 +1,19 @@
+.cart-container{
+    position: fixed;
+    top: 70px;
+    right: 0;
+    z-index: 1000;
+    scroll-behavior: none;
+}
+
+.modal{
+    position: relative;
+    width: 0px;
+    height: calc(100vh - 70px);
+    background-color: #fff;
+    transition: all 1s;
+}
+
+.modalOn{
+    width: 350px;
+}

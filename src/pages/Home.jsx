@@ -60,7 +60,7 @@ const Home = () => {
             <section className='list-container'>
                 <div className='search-div'>
                     <input type="text"
-                        placeholder='Dimension ID'
+                        placeholder="I'm looking for something amazing . . ."
                         onChange={(e) => setInputSearch(e.target.value)} 
                         value={inputSearch}/>
                     <button className='search-btn'
