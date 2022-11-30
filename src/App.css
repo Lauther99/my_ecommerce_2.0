@@ -33,6 +33,11 @@ form button{
     cursor: pointer;
 }
 
+button{
+    border: none;
+    cursor: pointer;
+}
+
 form button:hover{
     box-shadow: 0 0 20px 0 #53d9d1;
 }

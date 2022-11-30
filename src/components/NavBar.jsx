@@ -1,13 +1,25 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import '../assets/styles/navbar.css'
+import { getCartProductsThunk } from '../store/slices/cartProducts.slice';
 import Cart from './Cart';
 
 const NavBar = () => {
-    const [activateCart, setActivateCart] = useState('modalOn');
+    const [activateCart, setActivateCart] = useState('');
+    const token = localStorage.getItem('token')
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+
     function modalOn() {
-        activateCart === 'modalOn'? setActivateCart('') : setActivateCart('modalOn')
+        if (token) {
+            activateCart === 'modalOn' ? setActivateCart('') : setActivateCart('modalOn')
+            dispatch(getCartProductsThunk())
+        } else {
+            navigate('/login')
+        }
     }
+
 
     return (
         <nav>
@@ -26,7 +38,7 @@ const NavBar = () => {
                 <div className='nav-icon link-icon' onClick={() => modalOn()}>
                     <i className="fa-solid fa-cart-shopping fa-xl"></i>
                 </div>
-                <Cart activateCart={activateCart}/>
+                <Cart activateCart={activateCart} setActivateCart={setActivateCart}/>
             </div>
         </nav>
     );

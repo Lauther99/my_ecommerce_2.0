@@ -1,19 +1,163 @@
-.cart-container{
+.cart-container {
     position: fixed;
     top: 70px;
     right: 0;
     z-index: 1000;
-    scroll-behavior: none;
 }
 
-.modal{
-    position: relative;
+.cart-container h2 {
+    overflow: hidden;
+    width: 200px;
+    padding: 1rem;
+}
+
+.modal {
     width: 0px;
     height: calc(100vh - 70px);
-    background-color: #fff;
+    padding-bottom: 1rem;
+    background-color: #eee;
+    box-shadow: 0 0 10px 0 #eee;
+    position: relative;
+    opacity: 0;
     transition: all 1s;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
 }
 
-.modalOn{
-    width: 350px;
+.modalOn {
+    width: 300px;
+    opacity: 1;
+}
+
+.cart-product-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    overflow-x: hidden;
+}
+
+.cart-product {
+    width: 250px;
+    padding: .5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+.cart-product .product-info {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: .5rem;
+}
+
+.details {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: .5rem;
+}
+
+.details p:nth-child(1) {
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.details p:nth-child(2) {
+    font-size: 13px;
+}
+
+.details p:nth-child(3) {
+    font-size: 13px;
+}
+
+.product-delete i {
+    cursor: pointer;
+}
+
+.product-delete i:hover {
+    animation: shake 0.5s;
+}
+
+.subtotal {
+    text-align: end;
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    border-top: 1px solid lightgrey;
+}
+
+.checkout-btn {
+    background-color: #53d9d1;
+    color: #eee;
+    width: 70%;
+    padding: 1rem;
+    border: none;
+    border-radius: 10px;
+    margin: .5rem auto;
+    cursor: pointer;
+}
+
+.checkout-btn:hover {
+    font-weight: 600;
+    color: #53d9d1;
+    background-color: #151515;
+    transform: scale(1.1);
+}
+
+@keyframes shake {
+    0% {
+        transform: translate(1px, 1px) rotate(0deg);
+    }
+
+    10% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+    }
+
+    20% {
+        transform: translate(-3px, 0px) rotate(1deg);
+    }
+
+    30% {
+        transform: translate(3px, 2px) rotate(0deg);
+    }
+
+    40% {
+        transform: translate(1px, -1px) rotate(1deg);
+    }
+
+    50% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+    }
+
+    60% {
+        transform: translate(-3px, 1px) rotate(0deg);
+    }
+
+    70% {
+        transform: translate(3px, 1px) rotate(-1deg);
+    }
+
+    80% {
+        transform: translate(-1px, -1px) rotate(1deg);
+    }
+
+    90% {
+        transform: translate(1px, 2px) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(1px, -2px) rotate(-1deg);
+    }
 }

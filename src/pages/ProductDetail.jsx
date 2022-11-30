@@ -1,22 +1,44 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { getProductsThunk } from '../store/slices/products.slice';
 import '../assets/styles/productDetail.css'
+import axios from 'axios';
+import { getCartProductsThunk } from '../store/slices/cartProducts.slice';
+import getConfig from '../utils/getConfig';
 
 const ProductDetail = () => {
     const { id } = useParams()
     const allProducts = useSelector(state => state.products);
     const dispatch = useDispatch()
+    const selectedProduct = allProducts.find(product => product.id === Number(id))
+    const similarProducts = allProducts.filter(product => product.category.id === selectedProduct.category.id)
+    const [quantityProduct, setQuantityProduct] = useState(1);
 
     useEffect(() => {
         dispatch(getProductsThunk())
     }, [])
 
-    const selectedProduct = allProducts.find(product => product.id === Number(id))
-    const similarProducts = allProducts.filter(product => product.category.id === selectedProduct.category.id)
+    function incrementProduct(e) {
+        setQuantityProduct(quantityProduct + 1)
+        e.preventDefault()
+    }
 
-    console.log(similarProducts);
+    function decrementProduct(e) {
+        quantityProduct > 0 && setQuantityProduct(quantityProduct - 1)
+        e.preventDefault()
+    }
+
+    function addProduct(product, quantity) {
+        const productSelected = {
+            "id": product.id,
+            "quantity": quantity,
+        }
+
+        axios.post('https://e-commerce-api.academlo.tech/api/v1/cart/', productSelected, getConfig())
+            .then(dispatch(getCartProductsThunk()))
+            .catch(error => console.log(error))
+    }
 
     return (
         <div className='product-detail-container'>
@@ -35,9 +57,18 @@ const ProductDetail = () => {
                     <p><strong>{selectedProduct?.title}</strong></p>
                     <p>{selectedProduct?.description}</p>
                     <p><strong>Price: ${selectedProduct?.price}</strong></p>
-                    <div className='add-to-cart'>
-                        <h3>{'Add cart '}
-                            <i className="fa-solid fa-cart-shopping"></i>
+                    <div className='increment-decrement-div'>
+                        <button onClick={(e) => decrementProduct(e)}>
+                            -
+                        </button>
+                        <p>{quantityProduct}</p>
+                        <button onClick={(e) => incrementProduct(e)}>
+                            +
+                        </button>
+                    </div>
+                    <div className='add-to-cart' onClick={() => addProduct(selectedProduct, quantityProduct)}>
+                        <h3>
+                            Add cart <i className="fa-solid fa-cart-shopping"></i>
                         </h3>
                     </div>
                 </div>

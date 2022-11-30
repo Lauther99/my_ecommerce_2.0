@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { filterProductsThunk, findItemThunk, getProductsThunk } from '../store/slices/products.slice';
 import '../assets/styles/home.css'
 import axios from 'axios';
+import { getCartProductsThunk } from '../store/slices/cartProducts.slice';
+import getConfig from '../utils/getConfig';
 
 const Home = () => {
     const dispatch = useDispatch()
@@ -15,7 +17,6 @@ const Home = () => {
 
     useEffect(() => {
         dispatch(getProductsThunk())
-
         axios.get('https://e-commerce-api.academlo.tech/api/v1/products/categories')
             .then(res => setCategories(res.data.data.categories))
     }, [])
@@ -33,7 +34,17 @@ const Home = () => {
         dispatch(findItemThunk(inputSearch))
     }
 
-    console.log(categories);
+    function addProduct(product){
+        const productSelected = {
+            "id": product.id,
+            "quantity": 1,
+        }
+        console.log(productSelected);
+
+        axios.post('https://e-commerce-api.academlo.tech/api/v1/cart/', productSelected, getConfig())
+        .then(dispatch(getCartProductsThunk()))
+        .catch(error => console.log(error))
+    }
 
     return (
         <section className='home-container'>
@@ -81,9 +92,9 @@ const Home = () => {
                                         <h4>$ {product.price}</h4>
                                     </div>
                                 </Link>
-                                <div className='add-cart'>
-                                    <h3>{'Add cart '}
-                                        <i className="fa-solid fa-cart-shopping"></i>
+                                <div className='add-cart' onClick={() => addProduct(product)}>
+                                    <h3>
+                                        Add cart <i className="fa-solid fa-cart-shopping"></i>
                                     </h3>
                                 </div>
                             </article>

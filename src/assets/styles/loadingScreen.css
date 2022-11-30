@@ -1,7 +1,7 @@
 .loading-screen-div {
     width: 100vw;
     height: 100vh;
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     background-image: radial-gradient(circle farthest-corner at center, #0d0814a3 0%, #120e29b4 100%);

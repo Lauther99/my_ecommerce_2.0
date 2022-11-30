@@ -8,11 +8,11 @@ const Login = () => {
     const { register, handleSubmit } = useForm()
     const navigate = useNavigate()
     const [eyePassword, setEyePassword] = useState('password');
+    const token = localStorage.getItem('token')
 
     const submit = (data) => {
         axios.post('https://e-commerce-api.academlo.tech/api/v1/users/login', data)
             .then(res => {
-                console.log(res.data.data.token);
                 navigate('/')
                 localStorage.setItem('token', res.data.data.token)
             })
@@ -23,13 +23,11 @@ const Login = () => {
                     console.log(error.response.data);
                 }
             })
-        console.log(data);
     }
 
     const togglePassword = () => {
         eyePassword === 'password' ? setEyePassword('text') : setEyePassword('password')
     }
-
 
     return (
         <div className='login-container'>

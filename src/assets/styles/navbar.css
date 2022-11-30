@@ -2,6 +2,7 @@ nav{
     position: relative;
     width: 100%;
     height: 70px;
+    z-index: 1000;
 }
 
 .div-nav {
@@ -18,7 +19,6 @@ nav{
     right: 0;
     background: #151515a9;
     backdrop-filter: blur(100px);
-    z-index: 1000;
 
 }
 
@@ -81,7 +81,6 @@ nav{
     top: 0;
     right: 0;
     background-color: #53d9d1;
-
     clip-path: circle(0% at 50% calc(50%));
     transition: clip-path 1s cubic-bezier(0.65, 0, 0.35, 1);
 }
