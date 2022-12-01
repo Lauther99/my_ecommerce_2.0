@@ -42,7 +42,7 @@ const Home = () => {
         console.log(productSelected);
 
         axios.post('https://e-commerce-api.academlo.tech/api/v1/cart/', productSelected, getConfig())
-        .then(dispatch(getCartProductsThunk()))
+        .then(() => dispatch(getCartProductsThunk()))
         .catch(error => console.log(error))
     }
 

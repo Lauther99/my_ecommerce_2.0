@@ -27,6 +27,8 @@ const Purchases = () => {
         return newDate.toLocaleDateString()
     }
 
+    console.log(purchases);
+
     return (
         <div className='purchase-orders-container'>
             <h1>My purchases</h1>

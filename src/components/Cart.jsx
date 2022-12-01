@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import '../assets/styles/cart.css'
 import { getCartProductsThunk } from '../store/slices/cartProducts.slice';
+import { setPurchasesThunk } from '../store/slices/purchases.slice';
 import getConfig from '../utils/getConfig';
 
 const Cart = ({ activateCart, setActivateCart }) => {
@@ -17,10 +18,9 @@ const Cart = ({ activateCart, setActivateCart }) => {
     function deleteItem(product){
         const id = product.productsInCart.productId
         axios.delete(`https://e-commerce-api.academlo.tech/api/v1/cart/${id}`, getConfig())
-        .then()
+        .then(() => dispatch(getCartProductsThunk()))
         .catch(error => console.log(error.response))
-        .finally(dispatch(getCartProductsThunk()))
-        setActivateCart('')
+        
     }
 
     return (
@@ -57,7 +57,7 @@ const Cart = ({ activateCart, setActivateCart }) => {
                     <p>Total: </p>
                     <p><strong>{total}</strong></p>
                 </div>
-                <button type='button' className='checkout-btn'>Checkout</button>
+                <button type='button' className='checkout-btn' onClick={() => dispatch(setPurchasesThunk())}>Checkout</button>
             </div>
         </div>
     );
