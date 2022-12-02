@@ -25,7 +25,7 @@
     border: 1px solid lightgrey;
     display: flex;
     flex-direction: column;
-    gap: .5rem;
+    gap: 2rem;
     padding: .5rem;
 }
 
@@ -43,6 +43,9 @@
     padding: 0 1rem;
     margin: auto;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
 }
 
 .purchase-products-list div{
@@ -69,7 +72,8 @@
 }
 
 .quantity{
-    width: 10%;
+    width: 40px;
+    height: 40px !important;
     background-color: rgba(255, 255, 255, 0.336);
     border-radius: 5px;
     justify-content: center;
@@ -78,4 +82,38 @@
 .price{
     width: 10%;
     justify-content: center;
+}
+
+@media screen and (max-width: 800px) {
+    .purchase-order{
+        width: 90%;
+        gap: 2rem;
+    }
+
+    .quantity{
+        display: none !important;
+    }
+
+    .purchase-product-image{
+        display: none !important;
+    }
+
+    .purchase-order-header span:nth-child(2){
+        display: none;
+    }
+
+    .purchase-order-header{
+        height: fit-content;
+        padding: 0;
+    }
+
+    .purchase-order{
+        font-size: 14px;
+        min-height: 150px;
+        padding: 1rem;
+    }
+
+    .purchase-products-list{
+        padding: 0;
+    }
 }
