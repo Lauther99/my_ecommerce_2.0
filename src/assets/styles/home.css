@@ -186,15 +186,11 @@
     transform: scale(1.02);
 }
 
-.product-card:hover .add-cart{
-    opacity: 1;
-}
-
-.product-card .product-info h4:nth-child(1) {
+.product-card .product-info p:nth-child(1) {
     height: 60px;
 }
 
-.product-card .product-info h4:nth-child(2) {
+.product-card .product-info p:nth-child(2) {
     color: rgba(255, 255, 255, 0.522);
 }
 
@@ -211,10 +207,10 @@
     display: flex;
     transition: all .5s;
     cursor: pointer;
-    opacity: 0;
 }
 
-.add-cart h3 {
+.add-cart p {
     margin: auto;
+    font-weight: 600;
 }
 

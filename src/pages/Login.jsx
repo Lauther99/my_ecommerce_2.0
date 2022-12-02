@@ -1,10 +1,9 @@
-import axios from 'axios';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import '../assets/styles/login.css'
 import { loginUserThunk } from '../store/slices/user.slice';
+import '../assets/styles/login.css'
 
 const Login = () => {
     const { register, handleSubmit } = useForm()

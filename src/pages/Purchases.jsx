@@ -3,10 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getPurchasesThunk } from '../store/slices/purchases.slice';
 import '../assets/styles/purchases.css'
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const Purchases = () => {
     const dispatch = useDispatch();
     const purchases = useSelector(state => state.purchases);
+    const allProducts = useSelector(state => state.products);
 
     useEffect(() => {
         dispatch(getPurchasesThunk())
@@ -27,7 +29,10 @@ const Purchases = () => {
         return newDate.toLocaleDateString()
     }
 
-    console.log(purchases);
+    function getProductImage(item) {
+        const selectedProduct = allProducts.find(product => product.id === item.id)
+        return selectedProduct?.productImgs[0]
+    }
 
     return (
         <div className='purchase-orders-container'>
@@ -44,6 +49,7 @@ const Purchases = () => {
                                 <li key={Math.random()} className='purchase-products-list'>
                                     <Link to={`/product/${item.id}`}>
                                         <div className='purchase-product-image'>
+                                            <img src={getProductImage(item)} alt="" />
                                         </div>
                                         <div className='title'>{item.title}</div>
                                     </Link>

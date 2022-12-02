@@ -34,7 +34,7 @@ const ProductDetail = () => {
         }
         dispatch(addCartThunk(productSelected))
     }
-
+    
     return (
         <div className='product-detail-container'>
             <div className='home-link'>
@@ -53,13 +53,9 @@ const ProductDetail = () => {
                     <p>{selectedProduct?.description}</p>
                     <p><strong>Price: ${selectedProduct?.price}</strong></p>
                     <div className='increment-decrement-div'>
-                        <button onClick={(e) => decrementProduct(e)}>
-                            -
-                        </button>
+                        <button onClick={(e) => decrementProduct(e)}>-</button>
                         <p>{quantityProduct}</p>
-                        <button onClick={(e) => incrementProduct(e)}>
-                            +
-                        </button>
+                        <button onClick={(e) => incrementProduct(e)}>+</button>
                     </div>
                     <div className='add-to-cart' onClick={() => addProduct(selectedProduct, quantityProduct)}>
                         <h3>
@@ -78,14 +74,14 @@ const ProductDetail = () => {
                                     <img src={product.productImgs[0]} alt="" />
                                 </div>
                                 <div className='product-info'>
-                                    <h4>{product.title}</h4>
-                                    <h4>$ {product.price}</h4>
+                                    <p>{product.title}</p>
+                                    <p>$ {product.price}</p>
                                 </div>
                             </Link>
-                            <div className='add-cart'>
-                                <h3>{'Add cart '}
+                            <div className='add-cart' onClick={() => addProduct(product, 1)}>
+                                <p>{'Add cart '}
                                     <i className="fa-solid fa-cart-shopping"></i>
-                                </h3>
+                                </p>
                             </div>
                         </article>
                     ))

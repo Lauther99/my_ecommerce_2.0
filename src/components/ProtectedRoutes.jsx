@@ -1,4 +1,5 @@
 import { Navigate, Outlet } from 'react-router-dom';
+
 const ProtectedRoutes = () => {
     const token = localStorage.getItem('token')
         // Aquí va la condición. Puede ser una condición de cualquier tipo. Lo que 

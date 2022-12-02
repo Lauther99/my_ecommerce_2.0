@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import '../assets/styles/navbar.css'
 import { getCartProductsThunk } from '../store/slices/cartProducts.slice';
 import Cart from './Cart';
+import '../assets/styles/navbar.css'
 
 const NavBar = () => {
     const [activateCart, setActivateCart] = useState('');

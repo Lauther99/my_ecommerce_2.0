@@ -5,6 +5,7 @@ import { filterProductsThunk, findItemThunk, getProductsThunk } from '../store/s
 import '../assets/styles/home.css'
 import axios from 'axios';
 import { addCartThunk } from '../store/slices/cartProducts.slice';
+import HomeSlider from '../components/HomeSlider';
 
 const Home = () => {
     const dispatch = useDispatch()
@@ -29,20 +30,22 @@ const Home = () => {
         id === 'all' ? dispatch(getProductsThunk()) : dispatch(filterProductsThunk(id))
     }
 
-    function findItem(inputSearch){
+    function findItem(inputSearch) {
         dispatch(findItemThunk(inputSearch))
     }
 
-    function addProduct(product){
+    function addProduct(product) {
         const productSelected = {
             "id": product.id,
             "quantity": 1,
         }
-        
+
         dispatch(addCartThunk(productSelected))
     }
 
     return (
+        <>
+        <HomeSlider />
         <section className='home-container'>
             <article className='categories-container'>
                 <div className='categories-title'>
@@ -84,14 +87,14 @@ const Home = () => {
                                         <img src={product.productImgs[0]} alt="" />
                                     </div>
                                     <div className='product-info'>
-                                        <h4>{product.title}</h4>
-                                        <h4>$ {product.price}</h4>
+                                        <p>{product.title}</p>
+                                        <p>$ {product.price}</p>
                                     </div>
                                 </Link>
                                 <div className='add-cart' onClick={() => addProduct(product)}>
-                                    <h3>
+                                    <p>
                                         Add cart <i className="fa-solid fa-cart-shopping"></i>
-                                    </h3>
+                                    </p>
                                 </div>
                             </article>
                         ))
@@ -99,6 +102,7 @@ const Home = () => {
                 </section>
             </section>
         </section>
+        </>
     );
 };
 

@@ -38,3 +38,7 @@
 .sign-up-form a{
     color: #53d9d1;
 }
+
+a{
+    text-decoration: none;
+}

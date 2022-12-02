@@ -68,8 +68,7 @@
 .increment-decrement-div {
     width: 100%;
     display: flex;
-    align-items: center;
-
+    align-items: flex-start;
 }
 
 .increment-decrement-div p{

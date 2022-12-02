@@ -1,14 +1,12 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import '../assets/styles/cart.css'
 import { deleteProductThunk, getCartProductsThunk } from '../store/slices/cartProducts.slice';
 import { setPurchasesThunk } from '../store/slices/purchases.slice';
+import '../assets/styles/cart.css'
 
-const Cart = ({ activateCart, setActivateCart }) => {
+const Cart = ({ activateCart }) => {
     const cartProducts = useSelector(state => state.cartProducts);
     const dispatch = useDispatch();
-    const [blank, setBlank] = useState('blank-space-active');
     let total = 0
 
     useEffect(() => {
