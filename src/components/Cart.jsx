@@ -2,13 +2,13 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import '../assets/styles/cart.css'
-import { getCartProductsThunk } from '../store/slices/cartProducts.slice';
+import { deleteProductThunk, getCartProductsThunk } from '../store/slices/cartProducts.slice';
 import { setPurchasesThunk } from '../store/slices/purchases.slice';
-import getConfig from '../utils/getConfig';
 
 const Cart = ({ activateCart, setActivateCart }) => {
     const cartProducts = useSelector(state => state.cartProducts);
     const dispatch = useDispatch();
+    const [blank, setBlank] = useState('blank-space-active');
     let total = 0
 
     useEffect(() => {
@@ -16,16 +16,12 @@ const Cart = ({ activateCart, setActivateCart }) => {
     },[])
 
     function deleteItem(product){
-        const id = product.productsInCart.productId
-        axios.delete(`https://e-commerce-api.academlo.tech/api/v1/cart/${id}`, getConfig())
-        .then(() => dispatch(getCartProductsThunk()))
-        .catch(error => console.log(error.response))
-        
+        dispatch(deleteProductThunk(product.productsInCart.productId))
     }
 
     return (
-        <div className='cart-container'>
-            <div className={`modal ${activateCart}`}>
+        <div className='cart-container' >
+            <div className={`modal ${activateCart}`} >
                 <h2>Your cart</h2>
                 <ul className='cart-product-list'>
                     {
@@ -57,7 +53,7 @@ const Cart = ({ activateCart, setActivateCart }) => {
                     <p>Total: </p>
                     <p><strong>{total}</strong></p>
                 </div>
-                <button type='button' className='checkout-btn' onClick={() => dispatch(setPurchasesThunk())}>Checkout</button>
+                <button type='button' className='checkout-btn' onClick={() => dispatch(setPurchasesThunk())}>Buy now</button>
             </div>
         </div>
     );

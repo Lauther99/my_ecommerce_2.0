@@ -5,7 +5,7 @@
     top: 0;
     right: 0;
     background-image: radial-gradient(circle farthest-corner at center, #0d0814a3 0%, #120e29b4 100%);
-    z-index: 100;
+    z-index: 500;
 }
 
 .spinner {

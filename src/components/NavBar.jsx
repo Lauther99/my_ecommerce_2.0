@@ -24,9 +24,9 @@ const NavBar = () => {
     return (
         <nav>
             <div className='div-nav'>
-                <h1><Link to='/'>Academlo Store</Link></h1>
+                <h1><Link to='/'>Your Friendly Store</Link></h1>
                 <div className='nav-icon'>
-                    <Link to='/login' className='link-icon'>
+                    <Link to='/user' className='link-icon'>
                         <i className="fa-solid fa-user fa-xl"></i>
                     </Link>
                 </div>

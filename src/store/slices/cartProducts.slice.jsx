@@ -23,3 +23,17 @@ export const getCartProductsThunk = () => (dispatch) => {
         .then((res) => dispatch(setCartProducts(res.data.data.cart.products)))
         .finally(() => dispatch(setIsLoading(false)));
 }
+
+export const addCartThunk = (product) => (dispatch) => {
+    dispatch(setIsLoading(true));
+    return axios.post('https://e-commerce-api.academlo.tech/api/v1/cart/', product, getConfig())
+        .then(() => dispatch(getCartProductsThunk()))
+        .catch(error => console.log(error))
+}
+
+export const deleteProductThunk = (id) => (dispatch) => {
+    dispatch(setIsLoading(true));
+    return axios.delete(`https://e-commerce-api.academlo.tech/api/v1/cart/${id}`, getConfig())
+        .then(() => dispatch(getCartProductsThunk()))
+        .catch(error => console.log(error.response))
+}

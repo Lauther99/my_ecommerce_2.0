@@ -27,10 +27,9 @@ export const getPurchasesThunk = () => (dispatch) => {
 
 export const setPurchasesThunk = () => (dispatch) => {
     dispatch(setIsLoading(true));
-    return axios.post('https://e-commerce-api.academlo.tech/api/v1/purchases',{}, getConfig())
+    return axios.post('https://e-commerce-api.academlo.tech/api/v1/purchases',{}, {headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }})
         .then((res) => {
             dispatch(setCartProducts([]))
-            dispatch(getPurchasesThunk())
         })
         .finally(() => dispatch(setIsLoading(false)));
 }

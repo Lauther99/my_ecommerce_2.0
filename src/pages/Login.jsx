@@ -1,28 +1,21 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import '../assets/styles/login.css'
+import { loginUserThunk } from '../store/slices/user.slice';
 
 const Login = () => {
     const { register, handleSubmit } = useForm()
     const navigate = useNavigate()
+    const dispatch =  useDispatch();
     const [eyePassword, setEyePassword] = useState('password');
-    const token = localStorage.getItem('token')
 
     const submit = (data) => {
-        axios.post('https://e-commerce-api.academlo.tech/api/v1/users/login', data)
-            .then(res => {
-                navigate('/')
-                localStorage.setItem('token', res.data.data.token)
-            })
-            .catch(error => {
-                if (error.response.status === 404) {
-                    alert('Credenciales incorrectas')
-                } else {
-                    console.log(error.response.data);
-                }
-            })
+        dispatch(loginUserThunk(data))
+        .then(() => navigate('/'))
+        
     }
 
     const togglePassword = () => {
@@ -42,7 +35,8 @@ const Login = () => {
                     <input type={eyePassword} placeholder='Your password' {...register('password')} required />
                     <i className="fa-solid fa-eye" onClick={() => togglePassword()}></i>
                 </div>
-                <button type='submit'>LOGIN</button>
+                <button>LOGIN</button>
+                <p>Don't have an account?, <Link to='/signup'>Sign Up</Link></p>
             </form>
         </div>
     );

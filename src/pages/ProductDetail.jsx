@@ -3,9 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { getProductsThunk } from '../store/slices/products.slice';
 import '../assets/styles/productDetail.css'
-import axios from 'axios';
-import { getCartProductsThunk } from '../store/slices/cartProducts.slice';
-import getConfig from '../utils/getConfig';
+import { addCartThunk } from '../store/slices/cartProducts.slice';
 
 const ProductDetail = () => {
     const { id } = useParams()
@@ -25,7 +23,7 @@ const ProductDetail = () => {
     }
 
     function decrementProduct(e) {
-        quantityProduct > 0 && setQuantityProduct(quantityProduct - 1)
+        quantityProduct > 1 && setQuantityProduct(quantityProduct - 1)
         e.preventDefault()
     }
 
@@ -34,10 +32,7 @@ const ProductDetail = () => {
             "id": product.id,
             "quantity": quantity,
         }
-
-        axios.post('https://e-commerce-api.academlo.tech/api/v1/cart/', productSelected, getConfig())
-            .then(() => dispatch(getCartProductsThunk()))
-            .catch(error => console.log(error))
+        dispatch(addCartThunk(productSelected))
     }
 
     return (
@@ -73,7 +68,7 @@ const ProductDetail = () => {
                     </div>
                 </div>
             </section>
-            <h2>More products for you ...</h2>
+            <h2>Maybe you like . . .</h2>
             <section className='similar-products'>
                 {
                     similarProducts.map(product => (

@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom';
 import { filterProductsThunk, findItemThunk, getProductsThunk } from '../store/slices/products.slice';
 import '../assets/styles/home.css'
 import axios from 'axios';
-import { getCartProductsThunk } from '../store/slices/cartProducts.slice';
-import getConfig from '../utils/getConfig';
+import { addCartThunk } from '../store/slices/cartProducts.slice';
 
 const Home = () => {
     const dispatch = useDispatch()
@@ -39,11 +38,8 @@ const Home = () => {
             "id": product.id,
             "quantity": 1,
         }
-        console.log(productSelected);
-
-        axios.post('https://e-commerce-api.academlo.tech/api/v1/cart/', productSelected, getConfig())
-        .then(() => dispatch(getCartProductsThunk()))
-        .catch(error => console.log(error))
+        
+        dispatch(addCartThunk(productSelected))
     }
 
     return (
@@ -71,7 +67,7 @@ const Home = () => {
             <section className='list-container'>
                 <div className='search-div'>
                     <input type="text"
-                        placeholder="I'm looking for something amazing . . ."
+                        placeholder="Looking for something amazing . . ."
                         onChange={(e) => setInputSearch(e.target.value)} 
                         value={inputSearch}/>
                     <button className='search-btn'
