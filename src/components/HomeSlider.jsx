@@ -6,7 +6,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const HomeSlider = () => {
     const products = useSelector(state => state.products);
-    console.log(products);
 
     return (
         <div className='slider'>

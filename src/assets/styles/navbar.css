@@ -121,3 +121,13 @@ nav{
             60% 70%,
             40% 70%);
 }
+
+@media screen and (max-width: 1125px) {
+    .div-nav{
+        /* height: 100%;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        overflow-y: auto; */
+    }
+}

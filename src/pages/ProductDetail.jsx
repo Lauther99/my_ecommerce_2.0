@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { getProductsThunk } from '../store/slices/products.slice';
+import useAddCart from '../hooks/useAddCart';
 import '../assets/styles/productDetail.css'
-import { addCartThunk } from '../store/slices/cartProducts.slice';
 
 const ProductDetail = () => {
     const { id } = useParams()
@@ -12,6 +12,7 @@ const ProductDetail = () => {
     const selectedProduct = allProducts.find(product => product.id === Number(id))
     const similarProducts = allProducts.filter(product => product.category.id === selectedProduct.category.id)
     const [quantityProduct, setQuantityProduct] = useState(1);
+    const [addProductHook] = useAddCart()
 
     useEffect(() => {
         dispatch(getProductsThunk())
@@ -28,11 +29,7 @@ const ProductDetail = () => {
     }
 
     function addProduct(product, quantity) {
-        const productSelected = {
-            "id": product.id,
-            "quantity": quantity,
-        }
-        dispatch(addCartThunk(productSelected))
+        addProductHook(product, quantity)
     }
     
     return (
@@ -73,11 +70,11 @@ const ProductDetail = () => {
                                 <div className='product-image'>
                                     <img src={product.productImgs[0]} alt="" />
                                 </div>
+                            </Link>
                                 <div className='product-info'>
                                     <p>{product.title}</p>
                                     <p>$ {product.price}</p>
                                 </div>
-                            </Link>
                             <div className='add-cart' onClick={() => addProduct(product, 1)}>
                                 <p>{'Add cart '}
                                     <i className="fa-solid fa-cart-shopping"></i>

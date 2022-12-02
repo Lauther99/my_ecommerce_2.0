@@ -20,26 +20,25 @@ const NavBar = () => {
         }
     }
 
-
     return (
         <nav>
-            <div className='div-nav'>
+            <ul className='div-nav'>
                 <h1><Link to='/'>Your Friendly Store</Link></h1>
-                <div className='nav-icon'>
+                <li className='nav-icon'>
                     <Link to='/user' className='link-icon'>
                         <i className="fa-solid fa-user fa-xl"></i>
                     </Link>
-                </div>
-                <div className='nav-icon'>
+                </li>
+                <li className='nav-icon'>
                     <Link to='/purchases' className='link-icon'>
                         <i className="fa-solid fa-store fa-xl"></i>
                     </Link>
-                </div>
-                <div className='nav-icon link-icon' onClick={() => modalOn()}>
+                </li>
+                <li className='nav-icon link-icon' onClick={() => modalOn()}>
                     <i className="fa-solid fa-cart-shopping fa-xl"></i>
-                </div>
+                </li>
                 <Cart activateCart={activateCart} setActivateCart={setActivateCart}/>
-            </div>
+            </ul>
         </nav>
     );
 };

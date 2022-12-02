@@ -6,6 +6,7 @@ import '../assets/styles/home.css'
 import axios from 'axios';
 import { addCartThunk } from '../store/slices/cartProducts.slice';
 import HomeSlider from '../components/HomeSlider';
+import useAddCart from '../hooks/useAddCart';
 
 const Home = () => {
     const dispatch = useDispatch()
@@ -14,6 +15,8 @@ const Home = () => {
     const [inputSearch, setInputSearch] = useState('');
     const [showCategories, setShowCategories] = useState('up');
     const [changeDirection, setChangeDirection] = useState('');
+    const [addProductHook] = useAddCart()
+
 
     useEffect(() => {
         dispatch(getProductsThunk())
@@ -35,12 +38,7 @@ const Home = () => {
     }
 
     function addProduct(product) {
-        const productSelected = {
-            "id": product.id,
-            "quantity": 1,
-        }
-
-        dispatch(addCartThunk(productSelected))
+        addProductHook(product)
     }
 
     return (
@@ -49,7 +47,7 @@ const Home = () => {
         <section className='home-container'>
             <article className='categories-container'>
                 <div className='categories-title'>
-                    <h1>Categories</h1>
+                    <h3>Categories</h3>
                     <p onClick={() => upAndDown()}>
                         <i className={`fa-solid fa-sort-down ${changeDirection}`}></i>
                     </p>
@@ -86,11 +84,11 @@ const Home = () => {
                                     <div className='product-image'>
                                         <img src={product.productImgs[0]} alt="" />
                                     </div>
+                                </Link>
                                     <div className='product-info'>
                                         <p>{product.title}</p>
                                         <p>$ {product.price}</p>
                                     </div>
-                                </Link>
                                 <div className='add-cart' onClick={() => addProduct(product)}>
                                     <p>
                                         Add cart <i className="fa-solid fa-cart-shopping"></i>
