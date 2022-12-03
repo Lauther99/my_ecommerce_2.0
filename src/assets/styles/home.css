@@ -1,6 +1,6 @@
 .home-container {
     width: 100%;
-    padding: 1rem;
+    padding: 5rem 1rem;
     background-color: rgba(238, 238, 238, 0.842);
     margin: 0 auto;
     display: flex;
@@ -215,8 +215,13 @@
 }
 
 @media screen and (max-width: 685px) {
+    .categories-container {
+        width: 150px;
+    }
+
     .carousel-container {
         height: 35vh !important;
+        min-height: 250px !important;
     }
 
     .slider {
@@ -230,5 +235,9 @@
 
     .list-container{
         width: 80%;
+    }
+    .search-div input {
+        font-size: 10px;
+        font-family: sans-serif;
     }
 }

@@ -14,8 +14,8 @@
             rgba(255, 255, 255, 0.473));
     backdrop-filter: blur(10rem);
     box-shadow: 0 0 20px 0 #53d9d1;
-    border-left: 5px solid #53d9d1;
-    border-right: 5px solid #53d9d1;
+    border: 5px solid #53d9d1;
+    border-radius: 10px;
 }
 
 .user-interface a {

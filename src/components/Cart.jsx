@@ -17,6 +17,10 @@ const Cart = ({ activateCart }) => {
         dispatch(deleteProductThunk(product.productsInCart.productId))
     }
 
+    function completePurchase(){
+        dispatch(setPurchasesThunk())
+    }
+
     return (
         <div className='cart-container' >
             <div className={`modal ${activateCart}`} >
@@ -51,7 +55,7 @@ const Cart = ({ activateCart }) => {
                     <p>Total: </p>
                     <p><strong>{total}</strong></p>
                 </div>
-                <button type='button' className='checkout-btn' onClick={() => dispatch(setPurchasesThunk())}>Buy now</button>
+                <button type='button' className='checkout-btn' onClick={() => completePurchase()}>Buy now</button>
             </div>
         </div>
     );

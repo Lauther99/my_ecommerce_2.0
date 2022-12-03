@@ -17,7 +17,6 @@ export const { setUserInfo } = userSlice.actions;
 
 export default userSlice.reducer;
 
-
 export const loginUserThunk = (data) => (dispatch) => {
     dispatch(setIsLoading(true));
     return axios.post('https://e-commerce-api.academlo.tech/api/v1/users/login', data)

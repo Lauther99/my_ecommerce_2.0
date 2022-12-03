@@ -10,6 +10,7 @@ import ProtectedRoutes from './components/ProtectedRoutes'
 import Purchases from './pages/Purchases'
 import User from './pages/User'
 import SignUp from './pages/SignUp'
+import Footer from './components/Footer'
 
 function App() {
   const isLoading = useSelector(state => state.isLoading);
@@ -29,6 +30,7 @@ function App() {
             <Route path='user' element={<User />} />
           </Route>
         </Routes>
+        <Footer />
       </HashRouter>
     </div>
   )

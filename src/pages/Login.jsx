@@ -13,7 +13,7 @@ const Login = () => {
 
     const submit = (data) => {
         dispatch(loginUserThunk(data))
-        .then(() => navigate(-1))
+        .then(() => navigate('/'))
     }
 
     const togglePassword = () => {

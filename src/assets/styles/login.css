@@ -1,4 +1,3 @@
-
 .login-form {
     width: 40%;
     height: 420px;
@@ -26,14 +25,14 @@
     position: relative;
 }
 
-.form-item input{
+.form-item input {
     width: 100%;
     height: 40px;
     border-radius: 5px;
     padding: 0 1rem;
 }
 
-.form-item i{
+.form-item i {
     cursor: pointer;
     position: absolute;
     bottom: 10px;
@@ -41,19 +40,31 @@
     color: #151515;
 }
 
-.form-item:has(input:required) label:after{
+.form-item:has(input:required) label:after {
     content: ' *';
     color: #eee;
 }
 
-.login-form p{
+.login-form p {
     font-size: 14px;
 }
 
-.login-form p a{
+.login-form p a {
     color: #53d9d1;
 }
 
+@media screen and (max-width: 750px) {
+    .form-item input {
+        font-size: 12px;
+        height: 35px;
+    }
 
+    .login-form button {
+        width: 50%;
+        font-size: 12px;
+    }
 
-
+    .login-form p {
+        font-size: 12px;
+    }
+}

@@ -47,3 +47,9 @@ form button:hover{
     }
 }
 
+.App{
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
